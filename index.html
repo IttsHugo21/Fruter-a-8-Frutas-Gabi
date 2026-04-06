@@ -14,8 +14,20 @@
         .legal-content { display: none; }
         .active-page { display: block !important; }
         .hidden-section { display: none; }
-        /* Asegurar que el iframe ocupe todo el contenedor */
-        .map-container iframe {
+        
+        /* Contenedor del mapa con dimensiones fijas para asegurar visibilidad */
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-color: #e5e7eb;
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: 0;
@@ -110,9 +122,8 @@
                         <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=300" alt="Verduras" class="w-full h-48 object-cover">
                         <div class="p-4"><h4 class="font-bold">Hortalizas frescas</h4></div>
                     </div>
-                    <!-- FOTO DE MANZANAS ACTUALIZADA Y VISIBLE -->
                     <div class="bg-white rounded-2xl overflow-hidden shadow-md group">
-                        <img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&q=80&w=400" alt="Variedad de manzanas rojas y verdes nítidas" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&q=80&w=400" alt="Variedad de manzanas" class="w-full h-48 object-cover group-hover:scale-110 transition duration-500">
                         <div class="p-4 text-center">
                             <h4 class="font-bold text-green-700">Variedad de Manzanas</h4>
                         </div>
@@ -141,13 +152,14 @@
                         </a>
                     </div>
 
-                    <!-- MAPA INTERACTIVO CORREGIDO -->
-                    <div class="map-container rounded-3xl overflow-hidden shadow-2xl h-[400px] border-4 border-white relative">
+                    <!-- MAPA INTERACTIVO CORREGIDO PARA CANVAS -->
+                    <div class="map-wrapper shadow-2xl border-4 border-white">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m1!2zQy4gZGUgbGEgTW9yZXLDrWEsIDYsIDUwMDA0IFphcmFnb3ph!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5914ed07d3947f%3A0xe5f992011b98be6f!2sFruter%C3%ADa%20Gabi!5e0!3m2!1ses!2ses!4v1711234567890!5m2!1ses!2ses" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
+                            src="https://maps.google.com/maps?q=Calle%20de%20la%20Morer%C3%ADa%206%2C%20Zaragoza&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0">
                         </iframe>
                     </div>
                 </div>
@@ -170,7 +182,7 @@
         </div>
     </footer>
 
-    <!-- Contenedor Legal (Oculto por defecto) -->
+    <!-- Contenedor Legal -->
     <div id="legal-container" class="hidden-section fixed inset-0 z-[100] bg-white overflow-y-auto p-8 pt-24">
         <div class="max-w-3xl mx-auto">
             <button onclick="showSection('main')" class="mb-8 text-green-600 font-bold flex items-center">
